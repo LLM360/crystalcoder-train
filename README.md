@@ -4,7 +4,7 @@ This repository contains the training code for [CrystalCoder](https://huggingfac
 
 # Code for Pretraining
 
-The training of Phase 1-3 is completely using [Cerebras's Model Zoo](https://github.com/Cerebras/modelzoo) on Cerewras CS-2 hardware.
+The training of Phase 1-3 is completed using [Cerebras's Model Zoo](https://github.com/Cerebras/modelzoo) on Cerebras CS-2 hardware.
 
 To launch the training, you can use the following command:
 
