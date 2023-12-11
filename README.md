@@ -37,4 +37,4 @@ If you plan to process the dataset yourself from scratch, you can refer to our [
 
 # Instruction Tuning
 
-The instruction tuning code is based on a modified version of [Megatron-LM](https://github.com/NVIDIA/Megatron-LM). The training code and dataset will be released later.
+We are currently working on instruction-tuned versions of CrystalCoder! The model, training code, and datasets will be released after completion.
