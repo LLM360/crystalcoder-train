@@ -1,7 +1,7 @@
 <h1 align="center">CrystalCoder</h1>
 
 <div align="center">
-   <img src="crystalcoder_logo.png" alt="logo" width="300"><br><br>
+   <img src="crystalcoder_logo.jpg" alt="logo" width="300"><br><br>
 </div>
 
 ---
