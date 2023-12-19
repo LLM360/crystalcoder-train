@@ -1,4 +1,18 @@
-# CrystalCoder Training Code
+<h1 align="center">CrystalCoder</h1>
+
+<div align="center">
+   <img src="crystalcoder_logo.png" alt="logo" width="300"><br><br>
+</div>
+
+---
+
+<p align="center">
+   <a href="https://github.com/LLM360/Analysis360/blob/dev/LICENSE"><img src="https://img.shields.io/badge/License-Apache_2.0-blue.svg" alt="license"></a>
+</p>
+<p align="center">
+🤗 <a href="https://huggingface.co/LLM360/CrystalCoder">[Model Download]</a> • 📈 <a href="https://github.com/LLM360/Analysis360/blob/main/README.md#list-of-analysis-and-metrics
+">[Analysis and Results]</a> • 📗 <a href="https://huggingface.co/datasets/LLM360/CrystalCoderDatasets">Pretraining Dataset</a>
+</p>
 
 This repository contains the training code for [CrystalCoder](https://huggingface.co/LLM360/CrystalCoder), a 7B-parameter language model pretrained on code and natural language.
 
