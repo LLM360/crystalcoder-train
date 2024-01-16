@@ -1,5 +1,5 @@
 cerebras:
-    save_iter_state_path: /cb/tests/cluster-mgmt/modelzoo-deps/charles/modelzoo_g42_shared/iter_state/231023_mbzuai_hector_codellm_phase3_v1.0
+    save_iter_state_path: /path/to/save/dir
 train_input:
     # Tokens: 119931863040
     # Params: 6583754752
@@ -17,49 +17,49 @@ train_input:
     prefetch_factor: 10
     persistent_workers: True
     mixture:
-    - data_dir: "/g42_shared/datasets/StarCoder/code_llm/stage3_fim_0.3/train_shuffled_correct_ratio/css"
+    - data_dir: "/path/to/stage3_fim_0.3/train_shuffled_correct_ratio/css"
       weight: 0.08792775542527535
-    - data_dir: "/g42_shared/datasets/StarCoder/code_llm/stage3_fim_0.3/train_shuffled_correct_ratio/javascript"
+    - data_dir: "/path/to/stage3_fim_0.3/train_shuffled_correct_ratio/javascript"
       weight: 0.18370762129027085
-    - data_dir: "/g42_shared/datasets/StarCoder/code_llm/stage3_fim_0.3/train_shuffled_correct_ratio/html"
+    - data_dir: "/path/to/stage3_fim_0.3/train_shuffled_correct_ratio/html"
       weight: 0.18536747298179254
-    - data_dir: "/g42_shared/datasets/StarCoder/code_llm/stage3_fim_0.3/train_shuffled_correct_ratio/python"
+    - data_dir: "/path/to/stage3_fim_0.3/train_shuffled_correct_ratio/python"
       weight: 0.34270089587947816
-    - data_dir: "/cb/customers/g42/datasets/llama/SlimPajama/ArXiv_train_packed"
+    - data_dir: "/path/to/SlimPajama/ArXiv_train_packed"
       weight: 0.016663255966286664
       data_subset: 0.0-0.1
-    - data_dir: "/cb/customers/g42/datasets/llama/SlimPajama/Book_train_packed"
+    - data_dir: "/path/to/SlimPajama/Book_train_packed"
       weight: 0.00831444671835677
       data_subset: 0.0-0.1
-    - data_dir: "/cb/customers/g42/datasets/llama/SlimPajama/C4_train_packed"
+    - data_dir: "/path/to/SlimPajama/C4_train_packed"
       weight: 0.01685693658811707
       data_subset: 0.0-0.1
-    - data_dir: "/cb/customers/g42/datasets/llama/SlimPajama/CommonCrawl_train_packed"
+    - data_dir: "/path/to/SlimPajama/CommonCrawl_train_packed"
       weight: 0.058282893778895735
       data_subset: 0.0-0.1
-    - data_dir: "/cb/customers/g42/datasets/llama/SlimPajama/StackExchange_train_packed"
+    - data_dir: "/path/to/SlimPajama/StackExchange_train_packed"
       weight: 0.008379821974060706
       data_subset: 0.0-0.1
-    - data_dir: "/cb/customers/g42/datasets/llama/SlimPajama/Wikipedia_train_packed"
+    - data_dir: "/path/to/SlimPajama/Wikipedia_train_packed"
       weight: 0.05835852419497722
       data_subset: 0.0-0.1
-    - data_dir: "/g42_shared/datasets/llama/StarCoder_fim_train_shuffled/"
+    - data_dir: "/path/to/StarCoder_fim_train_shuffled/"
       weight: 0.0334403752024888
       data_subset: 0.0-0.1
 eval_input:
     data_processor: "GptHDF5MapDataProcessor"
     data_dir:
-      - "/g42_shared/datasets/StarCoder/code_llm/stage3_fim_0.3/valid_correct_ratio/css" # 4450 samples
-      - "/g42_shared/datasets/StarCoder/code_llm/stage3_fim_0.3/valid_correct_ratio/javascript" # 10435 samples
-      - "/g42_shared/datasets/StarCoder/code_llm/stage3_fim_0.3/valid_correct_ratio/html" # 11906 samples
-      - "/g42_shared/datasets/StarCoder/code_llm/stage3_fim_0.3/valid_correct_ratio/python" # 21320 samples
-      - "/cb/customers/g42/datasets/llama/slimpj_arxiv_val_packed" # 12239 samples
-      - "/cb/customers/g42/datasets/llama/slimpj_book_val_packed" # 12285 samples
-      - "/cb/customers/g42/datasets/llama/slimpj_c4_val_packed" # 76178 samples
-      - "/cb/customers/g42/datasets/llama/slimpj_commoncrawl_val_packed" # 152448 samples
-      - "/cb/customers/g42/datasets/llama/slimpj_stackexchange_val_packed" # 9061 samples
-      - "/cb/customers/g42/datasets/llama/slimpj_wikipedia_val_packed" # 9711 samples
-      - "/g42_shared/datasets/llama/StarCoder_fim_val/" # 300000 samples
+      - "/path/to/stage3_fim_0.3/valid_correct_ratio/css" # 4450 samples
+      - "/path/to/stage3_fim_0.3/valid_correct_ratio/javascript" # 10435 samples
+      - "/path/to/stage3_fim_0.3/valid_correct_ratio/html" # 11906 samples
+      - "/path/to/stage3_fim_0.3/valid_correct_ratio/python" # 21320 samples
+      - "/path/to/slimpj_arxiv_val_packed" # 12239 samples
+      - "/path/to/slimpj_book_val_packed" # 12285 samples
+      - "/path/to/slimpj_c4_val_packed" # 76178 samples
+      - "/path/to/slimpj_commoncrawl_val_packed" # 152448 samples
+      - "/path/to/slimpj_stackexchange_val_packed" # 9061 samples
+      - "/path/to/slimpj_wikipedia_val_packed" # 9711 samples
+      - "/path/to/StarCoder_fim_val/" # 300000 samples
     use_worker_cache: False
     vocab_size: 32032
     batch_size: 32

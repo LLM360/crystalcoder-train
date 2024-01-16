@@ -1,8 +1,8 @@
 cerebras:
-  save_iter_state_path: /cb/tests/cluster-mgmt/modelzoo-deps/charles/modelzoo_g42_shared/iter_state/230907_mbzuai_hector_codellm_pol1_12_32_phase2_fim
+  save_iter_state_path: /path/to/save/dir
 eval_input:
   batch_size: 32
-  data_dir: /cb/customers/g42/datasets/llama/slimpj_arxiv_val_packed
+  data_dir: /path/to/slimpj_arxiv_val_packed
   data_processor: GptHDF5MapDataProcessor
   num_workers: 1
   repeat: false
@@ -91,7 +91,7 @@ runconfig:
   checkpoint_steps: 1500
   compile_dir: null
   compile_only: null
-  credentials_path: /opt/cerebras/certs/tls.crt
+  credentials_path: /path/to/tls.crt
   debug_args_path: debug_args_prec_table.proto
   disable_version_check: null
   dist_addr: localhost:8888
@@ -119,9 +119,8 @@ runconfig:
   mode: train
   model_dir: model_dir_phase2_prec_table
   mount_dirs:
-  - /cb/customers
-  - /cb/tests
-  - /g42_shared
+  - /path/to/optional/mount/dir
+  - /path/to/optional/tests
   num_act_servers: 1
   num_csx: 16
   num_epochs: null
@@ -130,7 +129,7 @@ runconfig:
   num_workers_per_csx: 1
   precision_opt_level: -1
   python_paths:
-  - /cb/tests/cluster-mgmt/modelzoo-deps/charles/modelzoo_g42_shared
+  - /path/to/modelzoo
   save_initial_checkpoint: false
   save_losses: true
   seed: 1
@@ -143,21 +142,21 @@ train_input:
   batch_size: 2112
   data_processor: GptHDF5MapDataProcessor
   mixture:
-  - data_dir: /cb/customers/g42/datasets/llama/SlimPajama/ArXiv_train_packed_part1of2
+  - data_dir: /path/to/SlimPajama/ArXiv_train_packed_part1of2
     weight: 0.016083857723861224
-  - data_dir: /cb/customers/g42/datasets/llama/SlimPajama/Book_train_packed_part1of2
+  - data_dir: /path/to/SlimPajama/Book_train_packed_part1of2
     weight: 0.015358576352403003
-  - data_dir: /cb/customers/g42/datasets/llama/SlimPajama/C4_train_packed_part1of2
+  - data_dir: /path/to/SlimPajama/C4_train_packed_part1of2
     weight: 0.09909981505117808
-  - data_dir: /cb/customers/g42/datasets/llama/SlimPajama/CommonCrawl_train_packed_part1of2
+  - data_dir: /path/to/SlimPajama/CommonCrawl_train_packed_part1of2
     weight: 0.1983897689052003
-  - data_dir: /cb/customers/g42/datasets/llama/SlimPajama/Github_train_packed_part1of2
+  - data_dir: /path/to/SlimPajama/Github_train_packed_part1of2
     weight: 0.018454606218343703
-  - data_dir: /cb/customers/g42/datasets/llama/SlimPajama/StackExchange_train_packed_part1of2
+  - data_dir: /path/to/SlimPajama/StackExchange_train_packed_part1of2
     weight: 0.011784941022274698
-  - data_dir: /cb/customers/g42/datasets/llama/SlimPajama/Wikipedia_train_packed_part1of2
+  - data_dir: /path/to/SlimPajama/Wikipedia_train_packed_part1of2
     weight: 0.012710859995188247
-  - data_dir: /g42_shared/datasets/llama/StarCoder_fim_shuffled
+  - data_dir: /path/to/StarCoder_fim_shuffled
     weight: 0.6281175747315507
   num_workers: 1
   persistent_workers: true
