@@ -1,0 +1,33 @@
+{
+    "attn_pdrop": 0.0,
+    "scale_attn_weights": true,
+    "resid_pdrop": 0.0,
+    "mup_embeddings_scale": 14.6,
+    "n_inner": 10922,
+    "n_embd": 4096,
+    "layer_norm_epsilon": 1e-05,
+    "n_positions": 2048,
+    "activation_function": "swiglu",
+    "n_head": 32,
+    "n_layer": 32,
+    "mup_output_alpha": 2.22,
+    "mup_width_scale": 0.0625,
+    "position_embedding_type": "rotary",
+    "rotary_dim": 32,
+    "mup_scale_qk_dot_by_d": true,
+    "tie_word_embeddings": true,
+    "vocab_size": 32032,
+    "embd_pdrop": 0.0,
+    "model_type": "crystalcoder",
+    "use_cache": true,
+    "bos_token_id": 1,
+    "eos_token_id": 2,
+    "auto_map": {
+        "AutoConfig": "configuration_crystalcoder.CrystalCoderConfig",
+        "AutoModel": "modeling_crystalcoder.CrystalCoderModel",
+        "AutoModelForCausalLM": "modeling_crystalcoder.CrystalCoderLMHeadModel"
+    },
+    "architectures": [
+        "CrystalCoderLMHeadModel"
+    ]
+}
