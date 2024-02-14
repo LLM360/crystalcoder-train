@@ -66,11 +66,12 @@ def get_batch(data_iterator):
 
     # Items and their type.
     keys = ['token_ids', 'label_ids', 'loss_mask']
-    datatype = torch.int64
+    datatype = torch.int32
 
     # Broadcast data.
     if data_iterator is not None:
         data = next(data_iterator)
+        data = {"token_ids": data[:,0,:], "label_ids": data[:, 2, :], "loss_mask": data[:, 1, :]}
     else:
         data = None
     data_b = tensor_parallel.broadcast_data(keys, data, datatype)
@@ -141,24 +142,28 @@ def forward_step(data_iterator, model: GPTModel):
 
 
 def instruction_train_valid_test_datasets_provider(num_samples):
-    args = get_args()
+    from h5_map_dataset.utils import set_defaults, get_params
+    from h5_map_dataset.dataset import HDF5Dataset
+    # args = get_args()
+    params = get_params("/workspace/crystalcoder-train/pretrain/params/phase2/params.yaml")
+    set_defaults(params)
 
-    print_rank_0(f'Building Instruction Datasets from: {args.data_path} ...')
+    # print_rank_0(f'Building Instruction Datasets from: {args.data_path} ...')
 
-    train_ds = datasets.load_dataset(
-        "json",
-        data_files=args.data_path,
-        split='train',
-        # num_proc=min(len(data_files), os.cpu_count()),
-        cache_dir='./train_cache/' + args.data_path[0].replace('/', '_'),
-    )
-    train_ds = train_ds.with_format("np")
-
+    # train_ds = datasets.load_dataset(
+    #     "json",
+    #     data_files=args.data_path,
+    #     split='train',
+    #     # num_proc=min(len(data_files), os.cpu_count()),
+    #     cache_dir='./train_cache/' + args.data_path[0].replace('/', '_'),
+    # )
+    # train_ds = train_ds.with_format("np")
+    train_ds = HDF5Dataset(params["train_input"])
     # streaming data does not have length
-    if hasattr(train_ds, '__len__'):
-        print_rank_0(f'huggingface dataset built, size = {len(train_ds)}')
-    else:
-        print_rank_0(f'huggingface dataset is streaming')
+    # if hasattr(train_ds, '__len__'):
+    #     print_rank_0(f'huggingface dataset built, size = {len(train_ds)}')
+    # else:
+    #     print_rank_0(f'huggingface dataset is streaming')
 
     valid_ds, test_ds = None, None
     print_rank_0("> finished creating pretrain datasets ...")

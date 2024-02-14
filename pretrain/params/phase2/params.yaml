@@ -142,21 +142,21 @@ train_input:
   batch_size: 2112
   data_processor: GptHDF5MapDataProcessor
   mixture:
-  - data_dir: /path/to/SlimPajama/ArXiv_train_packed_part1of2
+  - data_dir: /workspace/data/SlimPajama/ArXiv_train_packed_part1of2
     weight: 0.016083857723861224
-  - data_dir: /path/to/SlimPajama/Book_train_packed_part1of2
+  - data_dir: /workspace/data/SlimPajama/Book_train_packed_part1of2
     weight: 0.015358576352403003
-  - data_dir: /path/to/SlimPajama/C4_train_packed_part1of2
+  - data_dir: /workspace/data/SlimPajama/C4_train_packed_part1of2
     weight: 0.09909981505117808
-  - data_dir: /path/to/SlimPajama/CommonCrawl_train_packed_part1of2
+  - data_dir: /workspace/data/SlimPajama/CommonCrawl_train_packed_part1of2
     weight: 0.1983897689052003
-  - data_dir: /path/to/SlimPajama/Github_train_packed_part1of2
+  - data_dir: /workspace/data/SlimPajama/Github_train_packed_part1of2
     weight: 0.018454606218343703
-  - data_dir: /path/to/SlimPajama/StackExchange_train_packed_part1of2
+  - data_dir: /workspace/data/SlimPajama/StackExchange_train_packed_part1of2
     weight: 0.011784941022274698
-  - data_dir: /path/to/SlimPajama/Wikipedia_train_packed_part1of2
+  - data_dir: /workspace/data/SlimPajama/Wikipedia_train_packed_part1of2
     weight: 0.012710859995188247
-  - data_dir: /path/to/StarCoder_fim_shuffled
+  - data_dir: /workspace/data/StarCoder_fim_shuffled
     weight: 0.6281175747315507
   num_workers: 1
   persistent_workers: true

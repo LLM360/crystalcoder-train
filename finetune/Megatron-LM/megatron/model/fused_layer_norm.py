@@ -83,7 +83,8 @@ class MixedFusedLayerNorm(torch.nn.Module):
             "FusedLayerNormAffineFunction is not available, please install apex from https://github.com/NVIDIA/apex"
         return FusedLayerNormAffineFunction.apply(input, weight, self.bias, self.normalized_shape, self.eps, False)
     else:
-        output = FastLayerNormFN.apply(input, weight, self.bias, self.eps)
+        # had to patch this code to pass in memory_efficient=False
+        output = FastLayerNormFN.apply(input, weight, self.bias, self.eps, False)
 
         # Apex's fast layer norm function outputs a 'view' tensor (i.e., has
         # a populated '_base' field). This will result in schedule.py's
