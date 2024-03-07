@@ -24,7 +24,7 @@ from megatron.core.models.gpt.gpt_layer_specs import (
     gpt_layer_with_transformer_engine_spec,
     gpt_layer_with_transformer_engine_spec_moe
 )
-import datasets
+# import datasets
 
 
 def model_provider(pre_process=True, post_process=True) -> Union[GPTModel, megatron.model.GPTModel]:

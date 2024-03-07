@@ -9,22 +9,35 @@ PP=$6
 MBSZ=$7
 LOGDIR=$8
 
-
-outfile=$LOGDIR/$NODE_RANK.$HOSTNAME.stdout
-errfile=$LOGDIR/$NODE_RANK.$HOSTNAME.stderr
+outfile=$LOGDIR/$NODE_RANK.$(hostname).stdout
+errfile=$LOGDIR/$NODE_RANK.$(hostname).stderr
 
 DATA_PATH=""
 
 CKPT=/workspace/models/phase2_tp${TP}_pp${PP}_dev
-
+SAVE_DIR=${CKPT}_save
 ITERS=214301
+
+# if the file "{SAVE_DIR}/latest_checkpointed_iteration.txt" exists, then load from it
+# otherwise, load from the directory specified by ${CKPT}
+
+if [ -f "${SAVE_DIR}/latest_checkpointed_iteration.txt" ]; then
+    echo "Loading from ${SAVE_DIR}"
+    NO_LOAD_OPTIM="" # leave no_load_optim to empty string
+    LOAD_DIR=${SAVE_DIR}
+else
+    echo "Loading from ${CKPT}"
+    NO_LOAD_OPTIM="--no-load-optim --no-load-rng "
+    LOAD_DIR=${CKPT}
+fi
+
 CUDA_DEVICE_MAX_CONNECTIONS=1 torchrun \
     --nproc_per_node 4 --nnodes $NODE_CNT --node_rank $NODE_RANK --master_addr $MASTER --master_port $MASTER_PORT \
     /workspace/crystalcoder-train/finetune/Megatron-LM/pretrain_crystalcoder_inst.py --seq-length 2048 \
     --micro-batch-size $MBSZ --global-batch-size 2048 --max-position-embeddings 2048 --tokenizer-type NullTokenizer \
-    --load ${CKPT} --save ${CKPT}_save \
+    --load ${LOAD_DIR} --save ${SAVE_DIR} \
     --exit-on-missing-checkpoint --use-checkpoint-args \
-    --no-load-optim --no-load-rng --bf16 \
+    $NO_LOAD_OPTIM --bf16 \
     --no-position-embedding \
     --norm-epsilon 1e-5 \
     --use-flash-attn --no-query-key-layer-scaling --train-iters ${ITERS} \
